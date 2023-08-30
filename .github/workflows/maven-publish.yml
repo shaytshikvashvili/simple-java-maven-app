@@ -33,7 +33,7 @@ jobs:
         
     - name: Bump version
       id: bump
-      uses: mickem/gh-action-bump-maven-version
+      uses: mickem/gh-action-bump-maven-version@v1
 
     - name: Build and push Docker image
       run: |
