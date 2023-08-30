@@ -8,5 +8,5 @@ RUN mvn test
 
 # Final image
 FROM openjdk:11-jre-slim
-COPY --from=build /usr/src/app/target/your-app.jar /app/my-app-1.0.0.jar
+COPY --from=build /usr/src/app/target/*.jar /app/my-app-1.0.0.jar
 CMD ["java", "-jar", "/app/my-app-1.0.0.jar"]
