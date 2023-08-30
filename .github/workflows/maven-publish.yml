@@ -34,5 +34,5 @@ jobs:
       
     - name: Build and push Docker image
       run: |
-        docker build -t shayts/java-app:${{ env.project_version }}.
+        docker build -t shayts/java-app:${{ env.project_version }} .
         docker push shayts/java-app:${{ env.project_version }}
