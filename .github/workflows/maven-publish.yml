@@ -28,8 +28,11 @@ jobs:
     - name: Bump version
       id: bump
       uses: mickem/gh-action-bump-maven-version@v1
-
+      
+      - name: Get version
+      run: echo project_version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout) >> $GITHUB_ENV
+      
     - name: Build and push Docker image
       run: |
-        docker build -t shayts/java-app:$GITHUB_SHA .
-        docker push shayts/java-app:$GITHUB_SHA
+        docker build -t shayts/java-app:${{ env.project_version }}.
+        docker push shayts/java-app:${{ env.project_version }}
