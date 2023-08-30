@@ -7,7 +7,7 @@ RUN mvn -B -DskipTests clean package
 RUN mvn test
 
 # Extract the current project version from the pom.xml
-ARG VERSION=$(mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"
+ARG VERSION=$(mvn help:evaluate -Dexpression=project.version | grep "^[^\[]")
 
 # Final image
 FROM openjdk:11-jre-slim
