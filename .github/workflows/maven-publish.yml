@@ -24,7 +24,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
-        
+
     - name: Bump version
       id: bump
       uses: mickem/gh-action-bump-maven-version@v1
