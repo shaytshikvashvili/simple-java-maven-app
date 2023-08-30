@@ -28,5 +28,5 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t java-app:$GITHUB_SHA .
-        docker push java-app:$GITHUB_SHA
+        docker build -t shayts/java-app:$GITHUB_SHA .
+        docker push shayts/java-app:$GITHUB_SHA
