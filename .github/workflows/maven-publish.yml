@@ -4,10 +4,9 @@
 name: Maven Package
 
 on:
-  release:
-    push:
-      branches:
-        - master 
+  push:
+    branches:
+      - master 
 
 jobs:
   build:
