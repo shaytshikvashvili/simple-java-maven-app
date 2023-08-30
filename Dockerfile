@@ -6,7 +6,10 @@ WORKDIR /usr/src/app
 RUN mvn -B -DskipTests clean package
 RUN mvn test
 
+# Extract the current project version from the pom.xml
+ARG VERSION=$(mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"
+
 # Final image
 FROM openjdk:11-jre-slim
-COPY --from=build /usr/src/app/target/*.jar /app/my-app-1.0.0.jar
-CMD ["java", "-jar", "/app/my-app-1.0.0.jar"]
+COPY --from=build /usr/src/app/target/*.jar /app/my-app-${VERSION}.jar
+CMD ["sh", "-c", "java -jar /app/my-app-${VERSION}.jar"]
