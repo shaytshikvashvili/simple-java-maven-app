@@ -40,7 +40,7 @@ jobs:
     - name: Deploy
       uses: appleboy/ssh-action@master
       with:
-        host:
+        host: 3.70.248.121
         username: ubuntu
         key: ${{ secrets.ACTION_PRIVATE_KEY }}
         script: |
