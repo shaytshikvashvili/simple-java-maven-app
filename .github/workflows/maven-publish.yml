@@ -36,3 +36,15 @@ jobs:
       run: |
         docker build -t shayts/java-app:${{ env.project_version }} .
         docker push shayts/java-app:${{ env.project_version }}
+        
+    - name: Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host:
+        username: ubuntu
+        key: ${{ secrets.ACTION_PRIVATE_KEY }}
+        script: |
+          docker stop java-app-container || true
+          docker rm java-app-container || true
+          docker pull shayts/java-app:${project_version}
+          docker run -d --name java-app-container -p 80:80 shayts/java-app:${project_version}
