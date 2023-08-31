@@ -46,5 +46,5 @@ jobs:
         script: |
           sudo docker stop java-app-container || true
           sudo docker rm java-app-container || true
-          sudo docker pull shayts/java-app:${project_version}
-          sudo docker run -d --name java-app-container -p 80:80 shayts/java-app:${project_version}
+          sudo docker pull shayts/java-app:${{ env.project_version }}
+          sudo docker run -d --name java-app-container -p 80:80 shayts/java-app:${{ env.project_version }}
